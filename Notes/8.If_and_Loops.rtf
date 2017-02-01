@@ -1,0 +1,203 @@
+** Conditional Statements
+   ---------------------------------------------
+   --> if statement:
+   
+   Syntax: if(condition) {
+	     expr
+            }
+   Ex:
+        > x <- -3
+	> if(x < 0) {
+	print("x is a negative number")
+	}
+	[1] "x is a negative number"
+
+--> else statement:
+   
+   Syntax: if(condition) {
+	      expr1
+	   } else {
+	   expr2
+	}
+
+   Ex:
+        x <- -3
+	> if(x < 0) {
+	print("x is a negative number")
+	} else {
+	print("x is either a positive number or zero")
+	}
+	[1] "x is a negative number"
+
+--> else if statement:
+   
+   Syntax:    if(condition1) {
+		expr1
+		} else if(condition2) {
+		expr2
+		} else {
+		expr3
+		}
+	}
+
+   Ex:
+        > x <- -3 !
+	> if(x < 0) {
+	print("x is a negative number")
+	} else if(x == 0) {
+	print("x is zero")
+	} else {
+	print("x is a positive number")
+	}
+	[1] "x is a negative number"
+
+
+
+** while loop
+   ----------------------------------
+	while(condition) {
+	expr
+	}
+
+Ex:
+> ctr <- 1
+> while(ctr <= 7) {
+print(paste("ctr is set to", ctr))
+ctr <- ctr + 1
+}
+
+
+
+** break statement
+   ---------------------------
+   > ctr <- 1
+	> while(ctr <= 7) {
+	if(ctr %% 5 == 0) {
+	break             # Break if ctr is a 5-fold
+	}
+	print(paste("ctr is set to", ctr))
+	ctr <- ctr + 1
+	}
+	
+	[1] "ctr is set to 1"
+	[1] "ctr is set to 2"
+	[1] "ctr is set to 3"
+	[1] "ctr is set to 4"
+
+	while loop stops if ctr is 5: no more printouts
+
+
+** For loop
+   -----------------
+   -->* for loop:
+
+	Syntax: 
+	for(var in seq) {
+	expr
+	}
+
+> cities <- c("New York", "Paris", "London", "Tokyo","Rio de Janeiro", "Cape Town")
+> cities
+[1] "New York" "Paris" ... "Cape Town"
+
+> for(city in cities) {
+     print(city)
+  }
+[1] "New York"
+[1] "Paris"
+[1] "London"
+[1] "Tokyo"
+[1] "Rio de Janeiro"
+[1] "Cape Town"
+
+> for(city in cities) {
+     if(nchar(city) == 6) {
+       break
+     }
+  print(city)
+  }
+
+[1] "New York"
+[1] "Paris"
+
+** next statement
+   --------------------------------
+
+> for(city in cities) {
+     if(nchar(city) == 6) {
+       next       # next: skip to next iteration
+     }
+  print(city)
+  }
+
+[1] "New York"
+[1] "Paris"
+[1] "Tokyo"
+[1] "Rio de Janeiro"
+[1] "Cape Town"
+
+
+** for loop: v2
+   ---------------------------------------------
+
+   version 1:
+   
+   for(city in cities) {
+       print(city)
+   }
+
+
+   version: 2
+
+for(i in 1:length(cities)) {
+    print(paste(cities[i], "is on position", i, "in the cities vector."))
+}
+
+Ex: Loop over a vector
+
+# The linkedin vector has already been defined for you
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+
+# Loop version 1
+for (p in linkedin) {
+  print(p)
+}
+
+# Loop version 2
+for (i in 1:length(linkedin)) {
+  print(linkedin[i])
+}
+
+
+Ex: Loop over a list
+
+# The nyc list is already specified
+nyc <- list(pop = 8405837, 
+            boroughs = c("Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"), 
+            capital = FALSE)
+
+# Loop version 1
+for (p in nyc) {
+  print(p)
+}
+
+# Loop version 2
+for (i in 1:length(nyc)) {
+  print(nyc[[i]])
+}
+
+
+Ex: Loop over a Matrices
+
+> ttt
+     [,1] [,2] [,3]
+[1,] "O"  NA   "X" 
+[2,] NA   "O"  "O" 
+[3,] "X"  NA   "X"
+
+# define the double for loop
+for ( i in 1:nrow(ttt)) {
+  for ( j in 1:ncol(ttt)) {
+    print(paste("On row", i, "and column", j, "the board contains", ttt[i,j]))
+  }
+}

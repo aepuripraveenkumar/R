@@ -1,0 +1,236 @@
+** Relational Operators
+   ---------------------------------
+   1. Equality ==  and Inequality !=
+   Ex:
+   > TRUE == TRUE
+   [1] TRUE
+
+   > TRUE == FALSE
+   [1] FALSE
+
+   > "Hello" == "HI"
+   [1] FALSE
+
+   > 3 == 2
+   [1] FALSE
+
+  2. >, >= and <, <=
+  Ex:
+   > 2 < 5
+   [1] TRUE
+   
+   > 2 > 5
+   [1] FALSE
+
+   > "Hello" > "Goodbye"   # Alphabetic order
+   [1]True
+
+   > TRUE < FALSE      # TRUE coerces to 1 & FALSE coerces to 0
+   [1] FALSE
+
+   > vec1 <- c(1,2,3,4,5,6)   # element by element comparison
+   > vec2 > 3
+   [1]FALSE FALSE FALSE TRUE TRUE TRUE
+
+  > vec2 <- c(3,4,5,6,7,8)
+  > vec1 < vec2
+  [1]TRUE TRUE TRUE TRUE TRUE TRUE
+
+  Ex:   # Comparison of logicals
+         TRUE == FALSE    [o/p: FALSE]
+
+	# Comparison of numerics
+	-6 * 14 != 17 - 101  [o/p: FALSE]
+
+	# Comparison of character strings
+	"useR" == "user"  [o/p: FALSE]
+
+	# Compare a logical with a numeric
+	TRUE == 1   [o/p: TRUE]
+
+Ex
+
+	# The linkedin and facebook vectors have already been created for you
+	linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+	facebook <- c(17, 7, 5, 16, 8, 13, 14)
+
+	# On which days did the number of LinkedIn profile views exceed 15?
+	linkedin > 15
+
+	# When was your LinkedIn profile viewed only 5 times or fewer?
+	linkedin <= 5
+
+	# When was your LinkedIn profile visited more often than your Facebook profile?
+	linkedin > facebook
+
+	O/P:
+	> # The linkedin and facebook vectors have already been created for you
+	> linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+	> facebook <- c(17, 7, 5, 16, 8, 13, 14)
+	> 
+	> # Popular days
+	> linkedin > 15
+	[1]  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+	> 
+	> # Quiet days
+	> linkedin <= 5
+	[1] FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
+	> 
+	> # LinkedIn more popular than Facebook
+	> linkedin > facebook
+	[1] FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE
+
+Ex: Comapre matrices
+	# The social data has been created for you
+	linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+	facebook <- c(17, 7, 5, 16, 8, 13, 14)
+	views <- matrix(c(linkedin, facebook), nrow = 2, byrow = TRUE)
+
+	# When were the views exactly equal to 13? Use the views matrix to return a logical matrix.
+	views == 13
+
+	# For which days was the number of views less than or equal to 14? Again, have R return a logical matrix.
+	views <= 14
+
+	O/P:
+	> # The social data has been created for you
+	> linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+	> facebook <- c(17, 7, 5, 16, 8, 13, 14)
+	> views <- matrix(c(linkedin, facebook), nrow = 2, byrow = TRUE)
+	> 
+	> # When does views equal 13?
+	> views == 13
+	      [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]
+	[1,] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+	[2,] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+	> 
+	> # When is views less than or equal to 14?
+	> views <= 14
+	      [,1] [,2] [,3]  [,4] [,5]  [,6] [,7]
+	[1,] FALSE TRUE TRUE  TRUE TRUE FALSE TRUE
+	[2,] FALSE TRUE TRUE FALSE TRUE  TRUE TRUE
+
+
+
+** Logical Operators
+   -------------------------
+	? AND operator &
+	? OR operator |
+	? NOT operator !
+
+Ex: AND operator &
+
+	> TRUE & TRUE   #Only TRUE if both are TRUE
+	[1] TRUE
+
+	> FALSE & TRUE
+	[1] FALSE
+
+	> TRUE & FALSE
+	[1] FALSE
+
+	> FALSE & FALSE
+	[1] FALSE
+
+	> x <- 12
+	> x > 5 & x < 15
+	[1] TRUE
+
+	> x <- 17
+	> x > 5 & x < 15
+	[1] FALSE
+
+
+Ex: OR operator |
+
+	> TRUE | TRUE
+	[1] TRUE
+
+	> TRUE | FALSE
+	[1] TRUE
+
+	> FALSE | TRUE
+	[1] TRUE
+
+	> FALSE | FALSE
+	[1] FALSE
+
+	> y <- 4
+	> y < 5 | y > 15
+	[1] TRUE
+
+	> y <- 14
+	> y < 5 | y > 15
+	[1] FALSE
+
+Ex: NOT operator !
+	> !TRUE
+	[1] FALSE
+
+	> !FALSE
+	[1] TRUE
+
+	> !(x < 5)
+	> x >= 5
+
+	> is.numeric(5)
+	[1] TRUE
+
+	> !is.numeric(5)
+	[1] FALSE
+
+	> is.numeric("hello")
+	[1] FALSE
+
+	> !is.numeric("hello")
+	[1] TRUE
+
+Ex: Logical Operators & Vectors
+	
+	> c(TRUE, TRUE, FALSE) & c(TRUE, FALSE, FALSE)
+	[1] TRUE FALSE FALSE
+
+	> c(TRUE, TRUE, FALSE) | c(TRUE, FALSE, FALSE)
+	[1] TRUE TRUE FALSE
+
+	> !c(TRUE, TRUE, FALSE)
+	[1] FALSE FALSE TRUE
+
+Ex: & vs &&, | vs ||
+
+	> c(TRUE, TRUE, FALSE) & c(TRUE, FALSE, FALSE)
+	[1] TRUE FALSE FALSE
+
+	> c(TRUE, TRUE, FALSE) && c(TRUE, FALSE, FALSE)
+	[1] TRUE
+
+	> c(TRUE, TRUE, FALSE) | c(TRUE, FALSE, FALSE)
+	[1] TRUE TRUE FALSE
+
+	> c(TRUE, TRUE, FALSE) || c(TRUE, FALSE, FALSE)
+	[1] TRUE
+
+Ex: 
+	# The linkedin and last variable are already defined for you
+	linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+	last <- tail(linkedin, 1)   O/P: last is 14
+
+	# Is last under 5 or above 10?
+	last < 5 | last > 10        O/P: TRUE
+
+	# Is last between 15 (exclusive) and 20 (inclusive)?
+	last >15  & last <= 20      O/P: FALSE
+
+Ex: 
+	# Select the second column, named day2, from li_df: second
+	second <- li_df$day2
+
+	# Build a logical vector, TRUE if value in second is extreme: extremes
+	extremes <- second > 25 | second < 5
+
+	# Count the number of TRUEs in extremes
+	sum(extremes)
+
+	# Solve it with a one-liner
+	sum(li_df$day2 > 25 | li_df$day2 < 5)
+
